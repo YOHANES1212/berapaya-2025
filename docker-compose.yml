@@ -11,8 +11,15 @@ services:
     volumes:
       - ./src:/var/www/html
     depends_on:
+<<<<<<< HEAD
       db:
         condition: service_healthy
+=======
+      db
+    networks:
+      - default
+      - shared_net
+>>>>>>> 0e2196c (push predict and landing-page)
   nginx:
     build:
       context: ./nginx
@@ -26,6 +33,12 @@ services:
       - ./nginx/ssl:/etc/nginx/ssl:ro
     depends_on:
       - php
+<<<<<<< HEAD
+=======
+    networks:
+      - default
+      - shared_net
+>>>>>>> 0e2196c (push predict and landing-page)
   db:
     image: mariadb:10.11
     container_name: ${COMPOSE_PROJECT_NAME}_db
@@ -44,3 +57,15 @@ services:
     volumes:
       - ./db/conf.d:/etc/mysql/conf.d
       - ./db/data:/var/lib/mysql
+<<<<<<< HEAD
+=======
+    networks:
+      - default
+      - shared_net
+      
+networks:
+  default:
+    driver: bridge
+  shared_net:
+    external: true
+>>>>>>> 0e2196c (push predict and landing-page)

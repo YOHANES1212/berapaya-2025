@@ -13,9 +13,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+<<<<<<< HEAD
         $this->call([
             RoleSeeder::class,
             UserSeeder::class,
         ]);
+=======
+        // User::factory(10)->create();
+
+        $user = \App\Models\User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+        ]);
+
+        $user->assignRole('super_admin');
+>>>>>>> 0e2196c (push predict and landing-page)
     }
 }
